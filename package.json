@@ -1,0 +1,15 @@
+{
+    "name": "simple-web-server",
+    "description": "Agreat course on Docker",
+    "version": "1.0.0",
+    "author": "Markus Pettersson <markus.pettersson@agreat.com>",
+    "license": "MIT",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "express": "*"
+    },
+    "devDependencies": {}
+}

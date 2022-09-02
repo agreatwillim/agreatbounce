@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+          margin: 0;
+          box-sizing: border-box;
+          overflow: hidden;
+      }
+
+      #black {
+          height: 100vh;
+          width: 100vw;
+          background-color: #111;
+      }
+
+      #dvd {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          height: 400px;
+          width: 400px;
+          background-repeat: no-repeat;
+          background-size: 75px;
+          background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="black">
+      <object id="dvd" data="/logos/AGREATred.svg"></object>
+    </div>
+  </body>
+  <script>
+    const pickLogo = color => `/logos/AGREAT${color}.svg`;
+
+    let x = 0,
+        y = 0,
+        dirX = 1,
+        dirY = 1;
+    const speed = 1;
+
+    let index = -1;
+    const pallete = ["red", "yellow", "green", "blue"];
+
+    let dvd = document.getElementById("dvd");
+
+    const dvdWidth = dvd.clientWidth;
+    const dvdHeight = dvd.clientHeight;
+
+    let logo = pickLogo(getNewRandomColor());
+
+    function getNewRandomColor() {
+      index = (index + 1) % pallete.length;
+      return pallete[index];
+    }
+
+    function animate() {
+      const screenHeight = document.body.clientHeight;
+      const screenWidth = document.body.clientWidth;
+
+      if (y + dvdHeight >= screenHeight || y < 0) {
+        dirY *= -1;
+
+        const logo = pickLogo(getNewRandomColor());
+        dvd.data = logo;
+      }
+      if (x + dvdWidth >= screenWidth || x < 0) {
+        dirX *= -1;
+
+        const logo = pickLogo(getNewRandomColor());
+        dvd.data = logo;
+      }
+      x += dirX * speed;
+      y += dirY * speed;
+      dvd.style.left = x + "px";
+      dvd.style.top = y + "px";
+      window.requestAnimationFrame(animate);
+    }
+
+    window.requestAnimationFrame(animate);
+  </script>
+</html>
