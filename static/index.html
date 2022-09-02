@@ -18,7 +18,7 @@
           position: absolute;
           left: 0px;
           top: 0px;
-          height: 400px;
+          height: 311px;
           width: 400px;
           background-repeat: no-repeat;
           background-size: 75px;
@@ -52,8 +52,8 @@
               .map(text => parser.parseFromString(text, 'text/xml'))
               .map(document => document.documentElement)
               .map(svg => {
-                  svg.setAttribute('height', "400px");
-                  svg.setAttribute('width', "400px");
+                  svg.setAttribute('height', "311");
+                  svg.setAttribute('width', "400");
                   return svg;
               })
               .map(svg => svg.outerHTML);
